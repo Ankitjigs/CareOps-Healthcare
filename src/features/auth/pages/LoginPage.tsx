@@ -24,6 +24,8 @@ import {
   loginWithEmail,
   loginWithGoogle,
   signUpWithEmail,
+  isFirebaseConfigured,
+  getMissingConfigKeys,
 } from "../../../services/firebase";
 import { cn } from "../../../shared/utils/utils";
 import { useAppStore } from "../../../store/useAppStore";
@@ -160,12 +162,25 @@ export const LoginPage = () => {
   };
 
   const handleGoogleSignIn = async () => {
+    console.log("Google Sign-In Triggered");
+    console.log("Firebase Configured Status:", isFirebaseConfigured);
+    const missing = getMissingConfigKeys();
+    console.log("Missing Keys:", missing);
+
+    if (!isFirebaseConfigured) {
+      setError(
+        `Firebase config incomplete: ${missing.join(", ")}. Please ensure you have triggered a NEW deployment in Vercel.`,
+      );
+      return;
+    }
     setError("");
     setAuthMode("google");
     try {
+      console.log("Calling loginWithGoogle()...");
       const sessionUser = await loginWithGoogle();
       setUser(sessionUser);
     } catch (loginError) {
+      console.error("Google Auth Error Detail:", loginError);
       setError(
         loginError instanceof Error
           ? getFriendlyErrorMessage(loginError.message, false)

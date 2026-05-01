@@ -20,6 +20,16 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
+// Diagnostic log for production troubleshooting (logs presence, not values)
+if (import.meta.env.PROD) {
+  console.log(
+    "Firebase Initializing. Configured Keys:",
+    Object.entries(firebaseConfig)
+      .filter(([, v]) => !!v)
+      .map(([k]) => k),
+  );
+}
+
 const hasFirebaseConfig = Object.values(firebaseConfig).every(Boolean);
 
 let app: FirebaseApp | undefined;
@@ -38,6 +48,12 @@ const mapFirebaseUser = (user: User): SessionUser => ({
 });
 
 export const isFirebaseConfigured = hasFirebaseConfig;
+
+export const getMissingConfigKeys = () => {
+  return Object.entries(firebaseConfig)
+    .filter(([, value]) => !value)
+    .map(([key]) => key);
+};
 
 export const loginWithGoogle = async () => {
   if (!auth) {
