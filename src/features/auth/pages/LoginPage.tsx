@@ -297,15 +297,12 @@ export const LoginPage = () => {
           <span>CareOps</span>
         </div>
 
-        <div className="flex items-center gap-3 text-teal font-extrabold text-2xl mb-6 desktop-only-brand">
-          <Activity size={24} />
-          <span>CareOps</span>
-        </div>
-
-        <div className="flex items-center gap-3 mb-6">
-          <ShieldCheck size={24} />
+        <div className="flex items-center gap-3 mb-6  ">
+          <ShieldCheck size={24} className="text-teal" />
           <div>
-            <h2>{isSignUp ? "Create account" : "Welcome back"}</h2>
+            <span className="text-2xl">
+              {isSignUp ? "Create account" : "Welcome back"}
+            </span>
           </div>
         </div>
 
