@@ -55,15 +55,17 @@ export const getMissingConfigKeys = () => {
     .map(([key]) => key);
 };
 
-export const loginWithGoogle = async () => {
+export const loginWithGoogle = () => {
   if (!auth) {
     throw new Error("Add Firebase config in .env to enable Google sign-in.");
   }
 
   const provider = new GoogleAuthProvider();
   provider.setCustomParameters({ prompt: "select_account" });
-  const credentials = await signInWithPopup(auth, provider);
-  return mapFirebaseUser(credentials.user);
+
+  return signInWithPopup(auth, provider).then((credentials) => {
+    return mapFirebaseUser(credentials.user);
+  });
 };
 
 export const loginWithEmail = async (email: string, password: string) => {
