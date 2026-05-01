@@ -70,7 +70,7 @@ export const UserProfileMenu = () => {
               initial={{ opacity: 0, y: 10, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 10, scale: 0.95 }}
-              className="absolute right-0 mt-3 w-72 overflow-hidden rounded-2xl border border-slate-200 bg-white/95 shadow-2xl backdrop-blur-xl"
+              className="absolute right-0 z-5 mt-3 w-72 overflow-hidden rounded-2xl border border-slate-200 bg-white/95 shadow-2xl backdrop-blur-xl"
             >
               <div className="flex items-center gap-4 border-b border-slate-100 p-5">
                 {user?.photoURL ? (
