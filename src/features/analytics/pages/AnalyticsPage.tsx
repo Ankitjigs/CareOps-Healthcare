@@ -116,7 +116,7 @@ export const AnalyticsPage = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
-        className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4.5 border border-border rounded-2xl p-[18px_20px] bg-white shadow-soft"
+        className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4.5 border border-border rounded-2xl p-[18px_20px] bg-white shadow-soft z-2 relative"
       >
         <div>
           <span className="m-0 mb-0.75 text-teal text-[0.76rem] font-[850] uppercase">
@@ -130,7 +130,7 @@ export const AnalyticsPage = () => {
           </p>
         </div>
         <div className="flex items-center gap-2.5">
-          <div className="relative">
+          <div className="relative overflow-visible">
             <button
               className={cn(
                 "inline-flex items-center justify-center gap-2 min-h-10.5 px-3.5 border border-border rounded-[10px] bg-white text-slate text-[0.88rem] font-extrabold whitespace-nowrap transition-all duration-150 hover:border-teal/35 hover:text-teal-dark hover:shadow-soft hover:-translate-y-px",
@@ -152,13 +152,13 @@ export const AnalyticsPage = () => {
             {showCohortMenu && (
               <>
                 <div
-                  className="fixed inset-0 z-10"
+                  className="fixed inset-0 z-2"
                   onClick={() => setShowCohortMenu(false)}
                 />
                 <motion.div
                   initial={{ opacity: 0, y: 10, scale: 0.95 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
-                  className="absolute right-0 mt-3 w-72 p-2 bg-white/94 backdrop-blur-xl border border-white/40 rounded-2xl shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(255,255,255,0.5)] z-20"
+                  className="absolute left-0  md:right-0 z-2 mt-3 w-72 p-2 bg-white/94 backdrop-blur-xl border border-white/40 rounded-2xl shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_10px_10px_-5px_rgba(0,0,0,0.04),inset_0_0_0_1px_rgba(255,255,255,0.5)] overflow-visible"
                 >
                   <div className="px-3 py-2 mb-2">
                     <span className="text-[10px] font-black uppercase tracking-widest text-muted">
@@ -216,7 +216,7 @@ export const AnalyticsPage = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
-        className="grid col-span-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+        className="grid col-span-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 relative z-0"
       >
         <motion.div
           initial={{ opacity: 0, y: 15 }}
@@ -280,7 +280,7 @@ export const AnalyticsPage = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
-        className="grid grid-cols-1 lg:grid-cols-2 gap-5"
+        className="grid grid-cols-1 lg:grid-cols-2 gap-5 relative z-0"
       >
         <motion.div
           initial={{ opacity: 0, y: 15 }}
@@ -311,7 +311,7 @@ export const AnalyticsPage = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 0.3, ease: "easeOut" }}
-        className="p-5 border border-border rounded-2xl bg-white/94 shadow-soft"
+        className="p-5 border border-border rounded-2xl bg-white/94 shadow-soft relative z-0"
       >
         <div className="flex justify-between items-start gap-4 mb-4.5">
           <div>
